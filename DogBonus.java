@@ -5,7 +5,7 @@ import java.util.*;
 public class DogBonus {
 
     static final int num_reported_breeds = 5;
-    static final int num_generations = 2;
+    static final int num_generations = 4;
 
     public static void main(String[] args) {
         Scanner inputReader = new Scanner(System.in);
@@ -19,7 +19,13 @@ public class DogBonus {
         Random rand = new Random();
 
         //array of dog breeds
-        String[] dog_array = {"St. Bernard", "Chihuahua", "Pug", "Poodle", "King Doberman", "Spaniel", "Hound", "Beagle", "Husky", "Boxer"};
+        String[] all_dogs_array = {"St. Bernard", "Chihuahua", "Pug", "Poodle", "King Doberman", "Spaniel", "Hound", "Beagle", "Husky", "Boxer"};
+
+        //shuffle dog array
+        Collections.shuffle(Arrays.asList(all_dogs_array));
+
+        //pick number of reported breeds from list
+        String[] dog_array = Arrays.copyOfRange(all_dogs_array, 0, num_reported_breeds);
 
         //create family tree leaves, assuming no inbreeding...
         String[] ancestors = new String[2 << (num_generations - 1)];
